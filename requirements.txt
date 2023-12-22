@@ -1,7 +1,6 @@
 aioice==0.9.0
 aiortc==1.6.0
 altair==5.2.0
-asyncio==3.4.3
 attrs==23.1.0
 av==11.0.0
 blinker==1.7.0

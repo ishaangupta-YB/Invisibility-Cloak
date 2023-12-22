@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import streamlit as st
 import streamlit.components.v1 as components
-import asyncio
 from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
 
 
@@ -57,24 +56,20 @@ class VideoTransformer(VideoTransformerBase):
         st.success("Background captured successfully!")
 
 
-async def main():
+def main():
     st.title("Harry Potter Invisibility Cloak")
 
     embed_component = {'linkedin': """<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
             <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="ishaangupta1201" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/ishaangupta1201?trk=profile-badge"></a></div>"""}
     with st.sidebar:
         st.sidebar.title("Author")
-        components.html(embed_component['linkedin'],height=310)
+        components.html(embed_component['linkedin'], height=310)
 
     webrtc_ctx = webrtc_streamer(key="example", video_processor_factory=VideoTransformer)
 
     if not webrtc_ctx.state.playing:
         print('WebRTC not connected')
 
-    await asyncio.sleep(1)
-
 
 if __name__ == "__main__":
-    asyncio.run(main())
-
-
+    main()
